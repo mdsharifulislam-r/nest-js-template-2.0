@@ -43,4 +43,9 @@ export class UpdateProfileDto {
   @IsOptional()
   @IsString()
   contact?: string;
+
+  @ApiPropertyOptional({ example: 'https://example.com/profile.jpg', description: 'Updated profile image URL',type: 'string',format:"binary" })
+  @IsOptional()
+  @IsString()
+  image?: string;
 }
