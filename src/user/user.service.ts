@@ -10,6 +10,7 @@ import sendResponse from 'src/utils/helper/sendResponse';
 import { cleanObject } from 'src/utils/helper/cleanObject';
 import TypeOrmQueryBuilder from 'src/utils/queryBuilder/queryBuilder';
 import { CreateUserDto, UpdateProfileDto } from './user.dto';
+import { SearchService } from 'src/utils/helper-modules/search/search.service';
 
 @Injectable()
 export class UserService {
@@ -28,18 +29,17 @@ export class UserService {
 
     const user = this.userRepo.create(dto);
     const savedUser = await this.userRepo.save(user);
-
     const otp = generateOTP();
-    const template = emailTemplate.createAccount({
-      name: savedUser.name,
-      email: savedUser.email,
-      otp,
-    });
+    // const template = emailTemplate.createAccount({
+    //   name: savedUser.name,
+    //   email: savedUser.email,
+    //   otp,
+    // });
 
-    // Fire and forget – don't block registration on email
-    this.emailService.sendEmail(template).catch((err) =>
-      this.logger.error(`Failed to send welcome email to ${savedUser.email}`, err),
-    );
+    // // Fire and forget – don't block registration on email
+    // this.emailService.sendEmail(template).catch((err) =>
+    //   this.logger.error(`Failed to send welcome email to ${savedUser.email}`, err),
+    // );
 
     await this.userRepo.update(
       { id: savedUser.id },

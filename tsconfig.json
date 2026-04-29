@@ -23,5 +23,6 @@
     "paths": {
       "src/*": ["src/*"]
     }
-  }
+  },
+  "include": ["src","scripts"],
 }

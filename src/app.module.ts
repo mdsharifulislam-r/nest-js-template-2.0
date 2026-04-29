@@ -12,6 +12,7 @@ import { SocketModule } from './utils/helper-modules/socket/socket.module';
 import { JwtModule } from '@nestjs/jwt';
 // import { KafkaModule } from './utils/helper-modules/kafka/kafka.module';
 
+
 @Module({
   imports: [
     // ─── Config ──────────────────────────────────────────────
@@ -46,7 +47,7 @@ import { JwtModule } from '@nestjs/jwt';
         autoLoadEntities: true,
         synchronize: config.get<string>('NODE_ENV') !== 'production',
         dropSchema: config.get<string>('NODE_ENV') === 'development',
-        logging: config.get<string>('NODE_ENV') === 'development',
+        // logging: config.get<string>('NODE_ENV') === 'development',
       }),
     }),
 

@@ -52,7 +52,7 @@ async function run() {
 
       const updated = await generateDocs(original);
 
-      const result = writeIfChanged(file, original, updated);
+      const result = writeIfChanged(file, original, updated!);
 
       if (result.updated) {
         console.log("updated:", file);

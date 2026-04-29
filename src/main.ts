@@ -8,6 +8,7 @@ import { GlobalExceptionFilter } from './utils/filters/global-exception.filter';
 import 'reflect-metadata';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
+
 const logger = new Logger('Bootstrap');
 
 async function bootstrap() {
@@ -56,11 +57,14 @@ async function bootstrap() {
     swaggerOptions: { persistAuthorization: true },
   });
 
+  // await generateSwagger(app);
+
+
   const port = process.env.PORT ?? 3000;
   const host = process.env.IP_ADDRESS || '0.0.0.0';
 
   await app.listen(port, host, () => {
-    logger.log(`Server running at http://${host}:${port}`);
+    logger.log(`Server running at http://${host}:${port}/api/v1/`);
     logger.log(`Swagger docs at http://${host}:${port}/docs`);
     logger.log(`Environment: ${process.env.NODE_ENV ?? 'development'}`);
   });

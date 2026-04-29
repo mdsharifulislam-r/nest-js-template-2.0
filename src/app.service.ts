@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-
+import { Response } from 'express';
+import * as path from 'path';
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'NestJS Backend API is running. Visit /docs for Swagger documentation.';
+  getHello(res: Response): void {
+    res.sendFile(path.join(process.cwd(), 'public/home.html'));
   }
 }
