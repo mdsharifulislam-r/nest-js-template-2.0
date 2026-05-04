@@ -109,7 +109,7 @@
 
                     const promptSpan = wrapper.querySelector("span");
                     const currentPrompt = promptSpan.textContent;
-                    
+
                     addLine(currentPrompt + " " + cmd);
                     handle(cmd);
 
@@ -133,7 +133,7 @@
         function handle(cmd) {
 
             if (cmd.startsWith("cd ")) {
-                cmd = cmd.replace("cd ", "");
+                cmd = cmd.replace("cd ", "").trim()
             }
 
 
